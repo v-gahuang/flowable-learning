@@ -12,6 +12,9 @@
 	targetNamespace="http://www.flowable.org/processdef">
 	<process id="articleReview"
 		name="A simple process for article review." isExecutable="true">
+		<extensionElements>
+			<flowable:eventListener delegateExpression="${sponsorSelectedEventListener}" events="VARIABLE_CREATED,VARIABLE_UPDATED" />
+		</extensionElements>
 		<startEvent id="start" />
 		<sequenceFlow sourceRef="start" targetRef="reviewArticle" />
 		<userTask id="reviewArticle"
